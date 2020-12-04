@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Grid, Button, Container, TextField } from '@material-ui/core';
-
+import Error from '../Components/Error';
+import Sceleton from '../Components/Sceleton';
 import { getSearchTracks } from '../store/actions/actionsTrack';
 
-const SearchTrackContainer = ({ getSearchTracks, track }) => {
+const SearchTrackContainer = ({ getSearchTracks, track, error, isLoading }) => {
   const [value, setValue] = useState('');
 
   function handleSeachTrack(str) {
@@ -22,6 +23,8 @@ const SearchTrackContainer = ({ getSearchTracks, track }) => {
     </div>
   ));
 
+  const content = error ? <Error error={error} /> : list;
+
   return (
     <Container component="main" maxWidth="md" pt={2}>
       <form noValidate autoComplete="off">
@@ -29,13 +32,12 @@ const SearchTrackContainer = ({ getSearchTracks, track }) => {
           <Grid item xs={9}>
             <TextField
               variant="outlined"
-              label="Saerch track"
+              label="Search track"
               name=""
               value={value}
               onChange={(e) => setValue(e.target.value)}
               required
               fullWidth
-              id="title"
             />
           </Grid>
           <Grid item xs={3}>
@@ -43,13 +45,15 @@ const SearchTrackContainer = ({ getSearchTracks, track }) => {
           </Grid>
         </Grid>
       </form>
-      {list}
+      {!isLoading ? content : <Sceleton />}
     </Container>
   );
 };
 
 const mapStateToProps = (state) => ({
-  track: state.track.track
+  track: state.track.track,
+  error: state.track.error,
+  isLoading: state.track.loading
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -58,12 +62,16 @@ const mapDispatchToProps = (dispatch) => ({
 
 SearchTrackContainer.propTypes = {
   getSearchTracks: PropTypes.func,
-  track: PropTypes.array
+  track: PropTypes.array,
+  error: PropTypes.string,
+  isLoading: PropTypes.bool
 };
 
 SearchTrackContainer.defaultProps = {
   getSearchTracks: () => {},
-  track: []
+  track: [],
+  isLoading: false,
+  error: ''
 };
 
 export default connect(

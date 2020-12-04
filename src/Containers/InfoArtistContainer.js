@@ -28,11 +28,7 @@ const InfoArtistContainer = (props) => {
 
   return (
     <Container component="main">
-      {!isLoading || Object.keys(infoArtist).length !== 0 ? (
-        content
-      ) : (
-        <Sceleton count={1} />
-      )}
+      {!isLoading ? content : <Sceleton count={1} />}
     </Container>
   );
 };

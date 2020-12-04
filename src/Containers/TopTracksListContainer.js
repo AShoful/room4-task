@@ -13,9 +13,12 @@ import { getTopTracks } from '../store/actions/actionsChart';
 
 const TopTracksListContainer = (props) => {
   const { topTracks, isLoading, getTopTracks, error } = props;
+
   React.useEffect(() => {
-    getTopTracks();
-  }, [getTopTracks]);
+    if (!topTracks.length) {
+      getTopTracks();
+    }
+  }, [getTopTracks, topTracks.length]);
 
   const list = topTracks.map((item, _) => (
     <CardTopArtist key={_} track={item} />

@@ -1,9 +1,13 @@
 import api from '../../api';
-import { FETCH_START, GET_INFO_ARTIST, FETCH_ERROR } from './actionTypes';
+import {
+  FETCH_START_INFO_ARTIST,
+  GET_INFO_ARTIST,
+  FETCH_ERROR_INFO_ARTIST
+} from './actionTypes';
 
 export function fetchStart() {
   return {
-    type: FETCH_START
+    type: FETCH_START_INFO_ARTIST
   };
 }
 
@@ -16,7 +20,7 @@ export function getInfoArtistSuccess(infoArtist) {
 
 export function fetchError(error) {
   return {
-    type: FETCH_ERROR,
+    type: FETCH_ERROR_INFO_ARTIST,
     error
   };
 }

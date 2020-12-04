@@ -1,7 +1,7 @@
 import {
-  FETCH_START,
+  FETCH_START_TOP_TRAKS,
   GET_TOP_TRACKS,
-  FETCH_ERROR
+  FETCH_ERROR_TOP_TRAKS
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_START:
+    case FETCH_START_TOP_TRAKS:
       return {
         ...state,
         loading: true
@@ -22,9 +22,9 @@ export default function authReducer(state = initialState, action) {
         ...state,
         topTracks: action.topTracks.tracks.track,
         error: '',
-        loading: false
+        loading: action.loading
       };
-    case FETCH_ERROR:
+    case FETCH_ERROR_TOP_TRAKS:
       return {
         ...state,
         error: action.error.response.data.message,

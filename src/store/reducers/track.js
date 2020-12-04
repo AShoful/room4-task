@@ -1,7 +1,7 @@
 import {
-  FETCH_START,
+  FETCH_START_SEARCH_TRACK,
   GET_SEARCH_TRACK,
-  FETCH_ERROR
+  FETCH_ERROR_SEARCH_TRACK
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_START:
+    case FETCH_START_SEARCH_TRACK:
       return {
         ...state,
         loading: true
@@ -24,7 +24,7 @@ export default function authReducer(state = initialState, action) {
         error: '',
         loading: false
       };
-    case FETCH_ERROR:
+    case FETCH_ERROR_SEARCH_TRACK:
       return {
         ...state,
         error: action.error.response.data.message,

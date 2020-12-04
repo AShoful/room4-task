@@ -1,22 +1,27 @@
 import api from '../../api';
-import { FETCH_START, GET_TOP_TRACKS, FETCH_ERROR } from './actionTypes';
+import {
+  FETCH_START_TOP_TRAKS,
+  GET_TOP_TRACKS,
+  FETCH_ERROR_TOP_TRAKS
+} from './actionTypes';
 
-export function fetchStart() {
+function fetchStart() {
   return {
-    type: FETCH_START
+    type: FETCH_START_TOP_TRAKS
   };
 }
 
-export function getTopTracksSuccess(topTracks) {
+function getTopTracksSuccess(topTracks) {
   return {
     type: GET_TOP_TRACKS,
-    topTracks
+    topTracks,
+    loading: false
   };
 }
 
-export function fetchError(error) {
+function fetchError(error) {
   return {
-    type: FETCH_ERROR,
+    type: FETCH_ERROR_TOP_TRAKS,
     error
   };
 }

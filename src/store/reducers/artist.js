@@ -1,7 +1,7 @@
 import {
-  FETCH_START,
+  FETCH_START_INFO_ARTIST,
   GET_INFO_ARTIST,
-  FETCH_ERROR
+  FETCH_ERROR_INFO_ARTIST
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_START:
+    case FETCH_START_INFO_ARTIST:
       return {
         ...state,
         loading: true
@@ -24,7 +24,7 @@ export default function authReducer(state = initialState, action) {
         error: '',
         loading: false
       };
-    case FETCH_ERROR:
+    case FETCH_ERROR_INFO_ARTIST:
       return {
         ...state,
         error: action.error.response.data.message,

@@ -1,9 +1,13 @@
 import api from '../../api';
-import { FETCH_START, GET_SEARCH_TRACK, FETCH_ERROR } from './actionTypes';
+import {
+  FETCH_START_SEARCH_TRACK,
+  GET_SEARCH_TRACK,
+  FETCH_ERROR_SEARCH_TRACK
+} from './actionTypes';
 
 export function fetchStart() {
   return {
-    type: FETCH_START
+    type: FETCH_START_SEARCH_TRACK
   };
 }
 
@@ -16,7 +20,7 @@ export function getSearchTracksSuccess(searchRezult) {
 
 export function fetchError(error) {
   return {
-    type: FETCH_ERROR,
+    type: FETCH_ERROR_SEARCH_TRACK,
     error
   };
 }
