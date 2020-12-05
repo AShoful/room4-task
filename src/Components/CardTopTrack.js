@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '3px solid rgba(0,0,0,0.2)'
   },
   CardMedia: {
-    width: '100%',
+    width: '95%',
     marginTop: theme.spacing(1),
     objectFit: 'contain',
     borderRadius: '50%',

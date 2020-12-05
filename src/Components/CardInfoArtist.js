@@ -18,7 +18,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   CardMedia: {
-    width: '100%',
+    width: '95%',
     marginTop: theme.spacing(1),
     objectFit: 'contain',
     borderRadius: '50%',
