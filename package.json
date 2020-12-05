@@ -1,5 +1,5 @@
 {
-  "name": "room4-test",
+  "name": "room4-task",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -66,5 +66,6 @@
       "npm run eslint-fix --max-warnings=0",
       "git add"
     ]
-  }
+  },
+  "homepage": "http://ashoful.github.io/room4-task"
 }
