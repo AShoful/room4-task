@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/room4-task/static/css/main.fd524a1b.chunk.css",
+    "main.js": "/room4-task/static/js/main.c86b0ef7.chunk.js",
+    "main.js.map": "/room4-task/static/js/main.c86b0ef7.chunk.js.map",
+    "runtime-main.js": "/room4-task/static/js/runtime-main.ed56e5ec.js",
+    "runtime-main.js.map": "/room4-task/static/js/runtime-main.ed56e5ec.js.map",
+    "static/js/2.146f09a6.chunk.js": "/room4-task/static/js/2.146f09a6.chunk.js",
+    "static/js/2.146f09a6.chunk.js.map": "/room4-task/static/js/2.146f09a6.chunk.js.map",
+    "index.html": "/room4-task/index.html",
+    "precache-manifest.fa8c397f9cbec4faf2b6972b2219a1cf.js": "/room4-task/precache-manifest.fa8c397f9cbec4faf2b6972b2219a1cf.js",
+    "service-worker.js": "/room4-task/service-worker.js",
+    "static/css/main.fd524a1b.chunk.css.map": "/room4-task/static/css/main.fd524a1b.chunk.css.map",
+    "static/js/2.146f09a6.chunk.js.LICENSE.txt": "/room4-task/static/js/2.146f09a6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed56e5ec.js",
+    "static/js/2.146f09a6.chunk.js",
+    "static/css/main.fd524a1b.chunk.css",
+    "static/js/main.c86b0ef7.chunk.js"
+  ]
+}
