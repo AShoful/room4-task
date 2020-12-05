@@ -48,10 +48,9 @@ const Skeleton = ({ count }) => {
     <div className={classes.card} key={index}>
       <div className={classes.cardContent}>
         <div className={classes.handle} />
-        <div className={classes.date} />
-        <div className={classes.fullLine} />
-        <div className={classes.fullLine} />
         <div className={classes.halfLine} />
+        <div className={classes.fullLine} />
+        <div className={classes.fullLine} />
       </div>
     </div>
   ));

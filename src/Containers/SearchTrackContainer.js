@@ -1,50 +1,28 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { Grid, Button, Container, TextField } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import Error from '../Components/Error';
 import Sceleton from '../Components/Sceleton';
+import SearchField from '../Components/SearchField';
+import CardSearchTrack from '../Components/CardSearchTrack';
 import { getSearchTracks } from '../store/actions/actionsTrack';
 
 const SearchTrackContainer = ({ getSearchTracks, track, error, isLoading }) => {
-  const [value, setValue] = useState('');
-
   function handleSeachTrack(str) {
     getSearchTracks(str);
   }
 
-  const list = track.map((item, _) => (
-    <div key={_}>
-      {item.name}
-      {item.artist}
-    </div>
-  ));
+  const list = track.map((item, _) => <CardSearchTrack key={_} track={item} />);
 
   const content = error ? <Error error={error} /> : list;
 
   return (
     <Container component="main" maxWidth="md" pt={2}>
-      <form noValidate autoComplete="off">
-        <Grid container spacing={2}>
-          <Grid item xs={9}>
-            <TextField
-              variant="outlined"
-              label="Search track"
-              name=""
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              required
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Button onClick={() => handleSeachTrack(value)}>Search</Button>
-          </Grid>
-        </Grid>
-      </form>
+      <SearchField handleSeachTrack={handleSeachTrack} />
       {!isLoading ? content : <Sceleton />}
     </Container>
   );
