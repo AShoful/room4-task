@@ -66,6 +66,5 @@
       "npm run eslint-fix --max-warnings=0",
       "git add"
     ]
-  },
-  "homepage": "https://ashoful.github.io/room4-task"
-}
+  }
+  }
