@@ -37,6 +37,7 @@ export default function SearchField({ handleSeachTrack }) {
   const handleClick = (e) => {
     e.preventDefault();
     handleSeachTrack(search);
+    setSearch('');
   };
 
   const handleChange = (e) => {
@@ -49,11 +50,13 @@ export default function SearchField({ handleSeachTrack }) {
         className={classes.input}
         placeholder="Search Track"
         onChange={(e) => handleChange(e)}
+        value={search}
       />
       <IconButton
         type="submit"
         className={classes.iconButton}
         onClick={(e) => handleClick(e)}
+        disabled={!search}
       >
         <SearchIcon className={classes.icon} />
       </IconButton>
