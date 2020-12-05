@@ -54,7 +54,7 @@ const Navbar = (props) => {
             <Grid container>
               <Grid item xs={8}>
                 <Button color="inherit" component={Link} to="/">
-                  Home
+                  Top list
                 </Button>
               </Grid>
               <Grid item xs={4} className={classes.right}>

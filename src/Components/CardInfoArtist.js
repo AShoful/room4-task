@@ -16,15 +16,29 @@ import {
   Typography
 } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   CardMedia: {
     width: '100%',
-    margin: 5,
-    height: 150,
-    objectFit: 'cover',
-    borderRadius: 10
+    marginTop: theme.spacing(1),
+    objectFit: 'contain',
+    borderRadius: '50%',
+    border: '3px solid rgba(0,0,0,0.2)',
+    marginBottom: theme.spacing(4)
+  },
+  name: {
+    color: theme.palette.primary.main,
+    fontSize: 36,
+    marginBottom: 0
+  },
+  bio: {
+    fontSize: 16
+  },
+  button: {
+    fontSize: 12,
+    margin: theme.spacing(1),
+    fontWeight: 600
   }
-});
+}));
 
 export default function ImgMediaCard({ artist }) {
   const classes = useStyles();
@@ -36,7 +50,7 @@ export default function ImgMediaCard({ artist }) {
   const { name, image, bio, tags } = artist;
   return (
     <Card>
-      <Grid container spacing={2}>
+      <Grid container>
         <Grid item xs={12} sm={3}>
           <CardMedia
             className={classes.CardMedia}
@@ -45,22 +59,38 @@ export default function ImgMediaCard({ artist }) {
             image={image[2]['#text']}
             title="image artist"
           />
+          <Grid container justify="space-around">
+            {tags.tag.map((item, i) => (
+              <Button
+                className={classes.button}
+                key={i}
+                size="small"
+                color="primary"
+                variant="outlined"
+              >
+                {item.name}
+              </Button>
+            ))}
+          </Grid>
         </Grid>
         <Grid item xs={12} sm={9}>
           <CardContent>
-            <Typography gutterBottom variant="subtitle1" component="h4">
+            <Typography
+              className={classes.name}
+              gutterBottom
+              variant="subtitle1"
+              component="h4"
+            >
               {name}
             </Typography>
-            <Typography variant="subtitle1" color="textSecondary" component="p">
+            <Typography
+              className={classes.bio}
+              variant="subtitle2"
+              color="textSecondary"
+              component="p"
+            >
               {bio.content}
             </Typography>
-            <Grid container justify="space-between">
-              {tags.tag.map((item, i) => (
-                <Button key={i} size="small" color="primary" variant="outlined">
-                  {item.name}
-                </Button>
-              ))}
-            </Grid>
           </CardContent>
         </Grid>
       </Grid>

@@ -18,10 +18,14 @@ const useStyles = makeStyles((theme) => ({
     flex: 1
   },
   iconButton: {
-    padding: theme.spacing(1)
+    padding: theme.spacing(1),
+    marginRight: theme.spacing(2)
   },
   divider: {
     height: 28
+  },
+  icon: {
+    opacity: 0.3
   }
 }));
 
@@ -51,7 +55,7 @@ export default function SearchField({ handleSeachTrack }) {
         className={classes.iconButton}
         onClick={(e) => handleClick(e)}
       >
-        <SearchIcon />
+        <SearchIcon className={classes.icon} />
       </IconButton>
       <Divider className={classes.divider} orientation="vertical" />
     </Paper>
