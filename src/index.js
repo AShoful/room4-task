@@ -6,9 +6,13 @@ import './index.css';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 import rootReducer from './store/reducers/rootReducer';
+import { sagaWatcher } from './store/actions/sagaChart';
+
+const saga = createSagaMiddleware();
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -17,8 +21,10 @@ const composeEnhancers =
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk, saga))
 );
+
+saga.run(sagaWatcher);
 
 const app = (
   <Provider store={store}>
