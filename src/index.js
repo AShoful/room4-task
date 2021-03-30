@@ -10,7 +10,7 @@ import createSagaMiddleware from 'redux-saga';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 import rootReducer from './store/reducers/rootReducer';
-import { sagaWatcher } from './store/actions/sagaChart';
+import rootSaga from './store/actions/rootSaga';
 
 const saga = createSagaMiddleware();
 
@@ -24,7 +24,7 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk, saga))
 );
 
-saga.run(sagaWatcher);
+saga.run(rootSaga);
 
 const app = (
   <Provider store={store}>

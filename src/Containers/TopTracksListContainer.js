@@ -8,7 +8,7 @@ import CardTopArtist from '../Components/CardTopTrack';
 import Error from '../Components/Error';
 import Sceleton from '../Components/Sceleton';
 
-import { fetchTrack } from '../store/actions/actionsChart';
+import { fetchCharts } from '../store/actions/sagaChart';
 
 const TopTracksListContainer = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const TopTracksListContainer = () => {
 
   React.useEffect(() => {
     if (!tracks.length) {
-      dispatch(fetchTrack());
+      dispatch(fetchCharts());
     }
   }, [tracks.length, dispatch]);
 
