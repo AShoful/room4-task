@@ -1,6 +1,6 @@
 import { GET_INFO_ARTIST, CLEAR_INFO_ARTIST } from '../sagas/actionTypes';
 
-export default function authReducer(state = {}, action) {
+export default function(state = {}, action) {
   switch (action.type) {
     case GET_INFO_ARTIST:
       return { ...action.infoArtist.artist };
