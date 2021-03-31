@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable consistent-return */
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -42,10 +42,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ImgMediaCard({ artist }) {
   const classes = useStyles();
-
-  if (!artist.name) {
-    return <Redirect to="/" />;
-  }
 
   const { name, image, bio, tags } = artist;
   return (

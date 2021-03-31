@@ -19,16 +19,18 @@ const SearchTrackContainer = () => {
     dispatch(fetchTracks(str));
   }
 
+  if (error) {
+    return <Error error={error} />;
+  }
+
   const list = tracks.map((item, _) => (
     <CardSearchTrack key={_} track={item} />
   ));
 
-  const content = error ? <Error error={error} /> : list;
-
   return (
     <Container component="main" maxWidth="md" pt={2}>
       <SearchField handleSeachTrack={handleSeachTrack} />
-      {!loading ? content : <Sceleton />}
+      {!loading ? list : <Sceleton />}
     </Container>
   );
 };

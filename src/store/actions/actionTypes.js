@@ -3,6 +3,7 @@ export const REQUEST_TRACKS = 'REQUEST_TRACKS';
 export const REQUEST_ARTIST = 'REQUEST_ARTIST';
 export const GET_TOP_TRACKS = 'GET_TOP_TRACKS';
 export const GET_INFO_ARTIST = 'GET_INFO_ARTIST';
+export const CLEAR_INFO_ARTIST = 'CLEAR_INFO_ARTIST';
 export const GET_SEARCH_TRACK = 'GET_SEARCH_TRACK';
 export const HIDE_ERROR = 'HIDE_ERROR';
 export const HIDE_LOADER = 'HIDE_LOADER';

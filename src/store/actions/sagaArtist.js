@@ -6,7 +6,8 @@ import {
   HIDE_LOADER,
   SHOW_ERROR,
   HIDE_ERROR,
-  GET_INFO_ARTIST
+  GET_INFO_ARTIST,
+  CLEAR_INFO_ARTIST
 } from './actionTypes';
 import api from '../../api';
 
@@ -14,6 +15,12 @@ export function fetchArtist(str) {
   return {
     type: REQUEST_ARTIST,
     str
+  };
+}
+
+export function clearArtist() {
+  return {
+    type: CLEAR_INFO_ARTIST
   };
 }
 

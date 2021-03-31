@@ -21,12 +21,14 @@ const TopTracksListContainer = () => {
     }
   }, [tracks.length, dispatch]);
 
+  if (error) {
+    return <Error error={error} />;
+  }
+
   const list = tracks.map((item, _) => <CardTopArtist key={_} track={item} />);
 
-  const content = error ? <Error error={error} /> : list;
-
   return (
-    <Container component="main">{!loading ? content : <Sceleton />}</Container>
+    <Container component="main">{!loading ? list : <Sceleton />}</Container>
   );
 };
 

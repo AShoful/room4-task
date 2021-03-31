@@ -10,27 +10,30 @@ import CardInfoArtist from '../Components/CardInfoArtist';
 import Error from '../Components/Error';
 import Sceleton from '../Components/Sceleton';
 
-import { fetchArtist } from '../store/actions/sagaArtist';
+import { fetchArtist, clearArtist } from '../store/actions/sagaArtist';
 
 const InfoArtistContainer = (props) => {
   const artistName = props.match.params.name;
-  const artist = useSelector((state) => state.artist.artist);
+  const artist = useSelector((state) => state.artist);
   const { loading, error } = useSelector((state) => state.app);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(fetchArtist(artistName));
+    return () => dispatch(clearArtist());
   }, [artistName, dispatch]);
 
-  const content = error ? (
-    <Error error={error} />
-  ) : (
-    <CardInfoArtist artist={artist} />
-  );
+  if (error) {
+    return <Error error={error} />;
+  }
 
   return (
     <Container component="main">
-      {!loading ? content : <Sceleton count={1} />}
+      {loading || !Object.keys(artist).length ? (
+        <Sceleton count={1} />
+      ) : (
+        <CardInfoArtist artist={artist} />
+      )}
     </Container>
   );
 };
