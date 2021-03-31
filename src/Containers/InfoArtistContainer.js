@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -10,54 +10,40 @@ import CardInfoArtist from '../Components/CardInfoArtist';
 import Error from '../Components/Error';
 import Sceleton from '../Components/Sceleton';
 
-import { getInfoArtist } from '../store/actions/actionsArtist';
+import { clearArtist, getInfoArtist } from '../store/actions/actionsArtist';
 
 const InfoArtistContainer = (props) => {
   const artistName = props.match.params.name;
-  const { infoArtist, isLoading, getInfoArtist, error } = props;
+  const { loading, error } = useSelector((state) => state.app);
+  const artist = useSelector((state) => state.artist);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    getInfoArtist(artistName);
-  }, [artistName, getInfoArtist]);
+    dispatch(getInfoArtist(artistName));
+    return () => dispatch(clearArtist());
+  }, [artistName, dispatch]);
 
-  const content = error ? (
-    <Error error={error} />
-  ) : (
-    <CardInfoArtist artist={infoArtist.artist} />
-  );
+  if (error) {
+    return <Error error={error} />;
+  }
 
   return (
     <Container component="main">
-      {!isLoading ? content : <Sceleton count={1} />}
+      {loading || !Object.keys(artist).length ? (
+        <Sceleton count={1} />
+      ) : (
+        <CardInfoArtist artist={artist} />
+      )}
     </Container>
   );
 };
 
-const mapStateToProps = (state) => ({
-  infoArtist: state.artist.infoArtist,
-  isLoading: state.artist.loading,
-  error: state.artist.error
-});
-const mapDispatchToProps = (dispatch) => ({
-  getInfoArtist: (name) => dispatch(getInfoArtist(name))
-});
-
 InfoArtistContainer.propTypes = {
-  getInfoArtist: PropTypes.func,
-  match: PropTypes.object,
-  infoArtist: PropTypes.object,
-  isLoading: PropTypes.bool,
-  error: PropTypes.string
+  match: PropTypes.object
 };
 
 InfoArtistContainer.defaultProps = {
-  getInfoArtist: () => {},
-  infoArtist: {},
-  match: {},
-  isLoading: false,
-  error: ''
+  match: {}
 };
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(InfoArtistContainer)
-);
+export default withRouter(InfoArtistContainer);
