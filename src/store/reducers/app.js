@@ -10,7 +10,7 @@ const initialState = {
   error: null
 };
 
-export default function app(state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case SHOW_LOADER:
       return { ...state, loading: true };

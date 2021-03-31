@@ -1,9 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '@material-ui/core';
 import CardTopArtist from '../Components/CardTopTrack';
 import Error from '../Components/Error';
@@ -11,52 +9,26 @@ import Sceleton from '../Components/Sceleton';
 
 import { getTopTracks } from '../store/actions/actionsChart';
 
-const TopTracksListContainer = (props) => {
-  const { topTracks, isLoading, getTopTracks, error } = props;
+const TopTracksListContainer = () => {
+  const dispatch = useDispatch();
+  const tracks = useSelector((state) => state.chart);
+  const { loading, error } = useSelector((state) => state.app);
 
   React.useEffect(() => {
-    if (!topTracks.length) {
-      getTopTracks();
+    if (!tracks.length) {
+      dispatch(getTopTracks());
     }
-  }, [getTopTracks, topTracks.length]);
+  }, [tracks.length, dispatch]);
 
-  const list = topTracks.map((item, _) => (
-    <CardTopArtist key={_} track={item} />
-  ));
+  if (error) {
+    return <Error error={error} />;
+  }
 
-  const content = error ? <Error error={error} /> : list;
+  const list = tracks.map((item, _) => <CardTopArtist key={_} track={item} />);
 
   return (
-    <Container component="main">
-      {!isLoading ? content : <Sceleton />}
-    </Container>
+    <Container component="main">{!loading ? list : <Sceleton />}</Container>
   );
 };
 
-const mapStateToProps = (state) => ({
-  topTracks: state.chart.topTracks,
-  isLoading: state.chart.loading,
-  error: state.chart.error
-});
-const mapDispatchToProps = (dispatch) => ({
-  getTopTracks: () => dispatch(getTopTracks())
-});
-
-TopTracksListContainer.propTypes = {
-  getTopTracks: PropTypes.func,
-  topTracks: PropTypes.array,
-  isLoading: PropTypes.bool,
-  error: PropTypes.string
-};
-
-TopTracksListContainer.defaultProps = {
-  getTopTracks: () => {},
-  topTracks: [],
-  isLoading: false,
-  error: ''
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TopTracksListContainer);
+export default TopTracksListContainer;

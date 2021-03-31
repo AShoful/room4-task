@@ -1,15 +1,6 @@
 import api from '../../api';
-import {
-  FETCH_START_TOP_TRAKS,
-  GET_TOP_TRACKS,
-  FETCH_ERROR_TOP_TRAKS
-} from './actionTypes';
-
-function fetchStart() {
-  return {
-    type: FETCH_START_TOP_TRAKS
-  };
-}
+import { hideError, hideLoader, showError, showLoader } from './actionsApp';
+import { GET_TOP_TRACKS } from './actionTypes';
 
 function getTopTracksSuccess(topTracks) {
   return {
@@ -19,22 +10,17 @@ function getTopTracksSuccess(topTracks) {
   };
 }
 
-function fetchError(error) {
-  return {
-    type: FETCH_ERROR_TOP_TRAKS,
-    error
-  };
-}
-
 export function getTopTracks() {
   return async (dispatch) => {
-    dispatch(fetchStart());
+    dispatch(hideError());
+    dispatch(showLoader());
     try {
       const res = await api.getTopTracks();
       const topTracks = res.data;
       dispatch(getTopTracksSuccess(topTracks));
+      dispatch(hideLoader());
     } catch (error) {
-      dispatch(fetchError(error));
+      dispatch(showError(error.message));
     }
   };
 }
