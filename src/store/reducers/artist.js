@@ -1,4 +1,4 @@
-import { GET_INFO_ARTIST, CLEAR_INFO_ARTIST } from '../actions/actionTypes';
+import { GET_INFO_ARTIST, CLEAR_INFO_ARTIST } from '../sagas/actionTypes';
 
 export default function authReducer(state = {}, action) {
   switch (action.type) {

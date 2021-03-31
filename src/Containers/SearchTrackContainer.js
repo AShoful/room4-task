@@ -8,7 +8,7 @@ import Error from '../Components/Error';
 import Sceleton from '../Components/Sceleton';
 import SearchField from '../Components/SearchField';
 import CardSearchTrack from '../Components/CardSearchTrack';
-import { fetchTracks } from '../store/actions/sagaTrack';
+import { fetchTracks } from '../store/sagas/sagaTrack';
 
 const SearchTrackContainer = () => {
   const tracks = useSelector((state) => state.track);

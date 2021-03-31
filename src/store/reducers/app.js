@@ -3,7 +3,7 @@ import {
   SHOW_ERROR,
   HIDE_LOADER,
   HIDE_ERROR
-} from '../actions/actionTypes';
+} from '../sagas/actionTypes';
 
 const initialState = {
   loading: false,

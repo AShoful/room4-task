@@ -1,4 +1,4 @@
-import { GET_TOP_TRACKS } from '../actions/actionTypes';
+import { GET_TOP_TRACKS } from '../sagas/actionTypes';
 
 // const initialState = {
 //   topTracks: []

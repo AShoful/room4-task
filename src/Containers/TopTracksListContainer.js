@@ -8,7 +8,7 @@ import CardTopArtist from '../Components/CardTopTrack';
 import Error from '../Components/Error';
 import Sceleton from '../Components/Sceleton';
 
-import { fetchCharts } from '../store/actions/sagaChart';
+import { fetchCharts } from '../store/sagas/sagaChart';
 
 const TopTracksListContainer = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import { GET_SEARCH_TRACK } from '../actions/actionTypes';
+import { GET_SEARCH_TRACK } from '../sagas/actionTypes';
 
 export default function authReducer(state = [], action) {
   switch (action.type) {

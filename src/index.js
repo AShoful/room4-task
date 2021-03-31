@@ -10,7 +10,7 @@ import createSagaMiddleware from 'redux-saga';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 import rootReducer from './store/reducers/rootReducer';
-import rootSaga from './store/actions/rootSaga';
+import rootSaga from './store/sagas/rootSaga';
 
 const saga = createSagaMiddleware();
 

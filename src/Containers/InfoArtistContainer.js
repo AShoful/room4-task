@@ -10,7 +10,7 @@ import CardInfoArtist from '../Components/CardInfoArtist';
 import Error from '../Components/Error';
 import Sceleton from '../Components/Sceleton';
 
-import { fetchArtist, clearArtist } from '../store/actions/sagaArtist';
+import { fetchArtist, clearArtist } from '../store/sagas/sagaArtist';
 
 const InfoArtistContainer = (props) => {
   const artistName = props.match.params.name;
