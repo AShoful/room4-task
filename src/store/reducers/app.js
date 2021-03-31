@@ -17,7 +17,7 @@ export default function app(state = initialState, action) {
     case HIDE_LOADER:
       return { ...state, loading: false };
     case SHOW_ERROR:
-      return { ...state, error: action.payload };
+      return { ...state, error: action.error };
     case HIDE_ERROR:
       return { ...state, error: null };
     default:
